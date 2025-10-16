@@ -179,7 +179,7 @@ def list_products():
     elif category:
         app.logger.info("Find by category: %s", category)
         # create enum from string
-        category_value = getattr(Category, category.upper())
+        category_value = getattr(category, category.upper())
         products = Product.find_by_category(category_value)
     else:
         app.logger.info("Find all")
