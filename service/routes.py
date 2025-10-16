@@ -171,10 +171,16 @@ def list_products():
 
     products = []
     name = request.args.get("name")
+    category = request.args.get("category")
 
     if name:
         app.logger.info("Find by name: %s", name)
         products = Product.find_by_name(name)
+    elif category:
+        app.logger.info("Find by category: %s", category)
+        # create enum from string
+        category_value = getattr(Category, category.upper())
+        products = Product.find_by_category(category_value)
     else:
         app.logger.info("Find all")
         products = Product.all()
@@ -182,4 +188,3 @@ def list_products():
     results = [product.serialize() for product in products]
     app.logger.info("[%s] Products returned", len(results))
     return results, status.HTTP_200_OK
-
