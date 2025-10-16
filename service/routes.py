@@ -121,6 +121,7 @@ def get_products(product_id):
     app.logger.info("Returning product: %s", product.name)
     return product.serialize(), status.HTTP_200_OK
 
+
 ######################################################################
 # UPDATE AN EXISTING PRODUCT
 ######################################################################
@@ -143,6 +144,7 @@ def update_products(product_id):
     product.update()
     return product.serialize(), status.HTTP_200_OK
 
+
 ######################################################################
 # DELETE A PRODUCT
 ######################################################################
@@ -160,6 +162,7 @@ def delete_products(product_id):
         product.delete()
 
     return "", status.HTTP_204_NO_CONTENT
+
 
 ######################################################################
 # LIST PRODUCTS
